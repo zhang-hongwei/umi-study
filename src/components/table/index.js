@@ -1,7 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
-import { Table as AntTable, Form, Button } from 'antd';
-import { useAntdTable } from '@umijs/hooks';
+import Table from "./components/tableForm"
 
-const Table = props => {
-  return <AntTable></AntTable>;
-};
+
+export {Table}

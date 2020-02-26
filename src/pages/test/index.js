@@ -8,8 +8,7 @@ import { getData, getUserInfo } from './server';
 import Mock from 'mockjs';
 // import { Table } from '@/components/table';
 import { columns } from './config';
-import Table from '../../components/table/components/table1';
-import Table1 from '../../components/table/components/A';
+import Table from '../../components/Table';
 const Bmemo = React.memo(B);
 
 const Test = () => {
@@ -34,7 +33,7 @@ const Test = () => {
 
       <br />
 
-      <Table1
+      <Table
         columns={columns}
         requestData={(p, formData) => {
           console.log('fff====>', p, formData);
@@ -46,7 +45,7 @@ const Test = () => {
             };
           });
         }}
-      ></Table1>
+      ></Table>
     </div>
   );
 };

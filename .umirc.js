@@ -1,7 +1,6 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
-<<<<<<< HEAD
   //   routes: [
   //     {
   //       path: '/',
@@ -11,9 +10,6 @@ export default {
   //       ]
   //     }
   //   ],
-=======
-
->>>>>>> b8d29db46279ae60bc4750d38fac27480a99ada5
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     [
@@ -37,7 +33,6 @@ export default {
       },
     ],
   ],
-<<<<<<< HEAD
 
   proxy: {
     '/api/': {
@@ -46,6 +41,4 @@ export default {
       secure: false,
     },
   },
-=======
->>>>>>> b8d29db46279ae60bc4750d38fac27480a99ada5
 };

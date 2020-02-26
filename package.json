@@ -8,17 +8,12 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@umijs/hooks": "^1.6.2",
     "antd": "^3.19.5",
     "axios": "^0.19.2",
-    "dva": "^2.6.0-beta.6",
     "mockjs": "^1.1.0",
-=======
-    "antd": "^3.19.5",
     "dva": "^2.6.0-beta.6",
     "moment": "^2.24.0",
->>>>>>> b8d29db46279ae60bc4750d38fac27480a99ada5
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },

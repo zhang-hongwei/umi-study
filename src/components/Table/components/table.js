@@ -1,7 +1,7 @@
-import { useRequest } from '@umijs/hooks';
-import React from 'react';
-import { Table, Button } from 'antd';
-import Mock from 'mockjs';
+import { useRequest } from '@/components/Table/components/node_modules/@umijs/hooks';
+import React from '@/components/Table/components/node_modules/react';
+import { Table, Button } from '@/components/Table/components/node_modules/antd';
+import Mock from '@/components/Table/components/node_modules/mockjs';
 
 
 

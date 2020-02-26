@@ -1,8 +1,8 @@
-import React from 'react';
-import { Button, Col, Form, Input, Row, Table, Select } from 'antd';
-import { WrappedFormUtils } from 'antd/lib/form/Form';
-import { useFormTable } from '@umijs/hooks';
-import axios from 'axios';
+import React from '@/components/Table/components/node_modules/react';
+import { Button, Col, Form, Input, Row, Table, Select } from '@/components/Table/components/node_modules/antd';
+import { WrappedFormUtils } from '@/components/Table/components/node_modules/antd/lib/form/Form';
+import { useFormTable } from '@/components/Table/components/node_modules/@umijs/hooks';
+import axios from '@/components/Table/components/node_modules/axios';
 // import { PaginatedParams } from '@umijs/hooks/useFormTable/lib';
 
 const { Option } = Select;

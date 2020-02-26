@@ -8,7 +8,7 @@ import axios from 'axios';
 const { Option } = Select;
 
 const AppList = props => {
-  const { columns, requestData } = props;
+  const { columns, requestData, tag = [] } = props;
   const { getFieldDecorator } = props.form;
 
   const { tableProps, search, loading } = useFormTable(requestData, {

@@ -8,7 +8,7 @@ import { getData, getUserInfo } from './server';
 import Mock from 'mockjs';
 // import { Table } from '@/components/table';
 import { columns } from './config';
-import Table from '../../components/Table';
+import { Table } from '../../components/Table';
 const Bmemo = React.memo(B);
 
 const Test = () => {
@@ -24,16 +24,22 @@ const Test = () => {
   };
 
   const handleClick1 = () => {};
-
+  const handleChange = () => {
+    setA(Math.random());
+  };
   return (
     <div>
+      <div>{anum}</div>
       <button onClick={handleClick}>click</button>
       <button onClick={handleClick1}>click</button>
       <C></C>
 
+      <button onClick={handleChange}>click</button>
+
       <br />
 
       <Table
+        tag={[anum]}
         columns={columns}
         requestData={(p, formData) => {
           console.log('fff====>', p, formData);

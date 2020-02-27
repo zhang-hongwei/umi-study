@@ -8,7 +8,7 @@ import axios from 'axios';
 const { Option } = Select;
 
 const AppList = props => {
-  const { columns, requestData, tag = [] } = props;
+  const { columns, requestData, tag = [], rowKey } = props;
   const { getFieldDecorator } = props.form;
 
   const { tableProps, search, loading } = useFormTable(requestData, {
@@ -62,7 +62,7 @@ const AppList = props => {
           }
         </Form>
       ) : null}
-      <Table columns={columns} rowKey="eemaile" {...tableProps} />
+      <Table columns={columns} rowKey="id" {...tableProps} />
     </div>
   );
 };

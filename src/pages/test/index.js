@@ -39,6 +39,7 @@ const Test = () => {
       <br />
 
       <Table
+        rowKey={() => Math.random + "'"}
         tag={[anum]}
         columns={columns}
         requestData={(p, formData) => {

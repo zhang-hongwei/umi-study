@@ -46,8 +46,8 @@ const Test = () => {
           return getData({ ...p, ...formData }).then(res => {
             const { list, total } = res.data;
             return {
-              list: list,
-              total: total,
+              list: [],
+              total: 100,
             };
           });
         }}

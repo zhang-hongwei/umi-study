@@ -1,6 +1,7 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { message, Modal } from 'antd';
 import router from 'umi/router';
+import axios from '@/packages/axios/axios';
 
 const { hostname } = window.location;
 

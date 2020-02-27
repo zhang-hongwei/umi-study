@@ -39,7 +39,6 @@ const Test = () => {
       <br />
 
       <Table
-        rowKey={() => Math.random + "'"}
         tag={[anum]}
         columns={columns}
         requestData={(p, formData) => {
@@ -47,8 +46,8 @@ const Test = () => {
           return getData({ ...p, ...formData }).then(res => {
             const { list, total } = res.data;
             return {
-              list: [],
-              total: 100,
+              list: list,
+              total: total,
             };
           });
         }}

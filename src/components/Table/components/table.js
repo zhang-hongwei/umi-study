@@ -3,9 +3,7 @@ import React from 'react';
 import { Table, Button } from 'antd';
 import Mock from 'mockjs';
 
-
-
-export default ({ columns = [], requestData }) => {
+export default ({ columns = [], requestData, deps }) => {
   const { tableProps, params, refresh } = useRequest(
     ({ current, pageSize, sorter: s, filters: f }) => {
       const p = { current, pageSize };
@@ -24,6 +22,7 @@ export default ({ columns = [], requestData }) => {
     {
       paginated: true,
       defaultPageSize: 10,
+      refreshDeps: [deps],
     },
   );
 

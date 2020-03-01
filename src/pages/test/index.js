@@ -8,10 +8,9 @@ import { getData, getUserInfo } from './server';
 import Mock from 'mockjs';
 // import { Table } from '@/components/table';
 import { columns } from './config';
-import { Table } from '../../components/Table';
-const Bmemo = React.memo(B);
+import Table from '@/components/Table/components/table';
 
-const Test = () => {
+const Page = () => {
   const [state, setstate] = useState({ a: '测试' });
 
   let [anum, setA] = useState(1);
@@ -23,27 +22,22 @@ const Test = () => {
     });
   };
 
-  const handleClick1 = () => {};
+  const handleClick1 = () => {
+    setA((anum += 1));
+  };
   const handleChange = () => {
     setA(Math.random());
   };
   return (
     <div>
-      <div>{anum}</div>
-      <button onClick={handleClick}>click</button>
-      <button onClick={handleClick1}>click</button>
-      <C></C>
-
-      <button onClick={handleChange}>click</button>
-
+      <button onClick={handleClick1}>点击刷新</button>
       <br />
-
       <Table
-        tag={[anum]}
+        deps={anum}
         columns={columns}
-        requestData={(p, formData) => {
-          console.log('fff====>', p, formData);
-          return getData({ ...p, ...formData }).then(res => {
+        requestData={p => {
+          console.log('fff====>', p);
+          return getData({ pageSize: 10 }).then(res => {
             const { list, total } = res.data;
             return {
               list: list,
@@ -56,4 +50,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Page;

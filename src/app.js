@@ -1,3 +1,4 @@
+import '@/style/index.less';
 export const dva = {
   config: {
     onError(err) {

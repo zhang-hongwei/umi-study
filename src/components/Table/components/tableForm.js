@@ -1,69 +1,60 @@
-import React from 'react';
-import { Button, Col, Form, Input, Row, Table, Select } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Button, Col, Form, Input, Row, Table, Select, ConfigProvider } from 'antd';
 import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { useFormTable } from '@umijs/hooks';
-import axios from 'axios';
 // import { PaginatedParams } from '@umijs/hooks/useFormTable/lib';
+import { formItemLayout } from './config';
 
 const { Option } = Select;
 
 const AppList = props => {
-  const { columns, requestData, tag = [], rowKey } = props;
+  const { columns, requestData, tag = [], rowKey, searchFrom, refresh } = props;
   const { getFieldDecorator } = props.form;
+  const [isSearch, setIsSearch] = useState(false);
+  const { tableProps, run, search, loading } = useFormTable(
+    (p, formData) => requestData({ ...formData, ...p }),
+    {
+      refreshDeps: [refresh],
+      defaultPageSize: 10,
+      form: props.form,
+    },
+    [refresh],
+  );
 
-  const { tableProps, search, loading } = useFormTable(requestData, {
-    defaultPageSize: 10,
-    form: props.form,
-  });
+  useEffect(() => {
+    run();
+  }, [refresh]);
+
+  tableProps.pagination.showQuickJumper = true;
+  tableProps.pagination.showSizeChanger = true;
+  tableProps.pagination.pageSizeOptions = ['10', '20', '30', '50'];
 
   const { type, changeType, submit, reset } = search;
 
-  console.log('+=====>>type==>', type);
-  const searchFrom = (
-    <>
-      <Row gutter={24}>
-        <Col span={8}>
-          <Form.Item label="name">
-            {getFieldDecorator('name')(<Input placeholder="name" />)}
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item label="email">
-            {getFieldDecorator('email')(<Input placeholder="email" />)}
-          </Form.Item>
-        </Col>
-        <Col span={8}>
-          <Form.Item label="phone">
-            {getFieldDecorator('phone')(<Input placeholder="phone" />)}
-          </Form.Item>
-        </Col>
-      </Row>
-      <Row></Row>
-    </>
-  );
-
   return (
-    <div>
-      {searchFrom ? (
-        <Form>
-          {searchFrom}
-          {
-            <Form.Item style={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Button type="primary" onClick={submit}>
+    <ConfigProvider renderEmpty={() => '暂时无数据'}>
+      <div>
+        {searchFrom ? (
+          <Form layout="inline">
+            {searchFrom(props.form)}
+            <Form.Item>
+              <Button
+                type="primary"
+                onClick={() => {
+                  setIsSearch(true);
+                  submit();
+                }}
+                style={{ marginRight: '16px' }}
+              >
                 搜索
               </Button>
-              <Button onClick={reset} style={{ marginLeft: 16 }}>
-                重置
-              </Button>
-              <Button type="link" onClick={changeType}>
-                Simple Search
-              </Button>
+              <Button onClick={reset}>重置</Button>
             </Form.Item>
-          }
-        </Form>
-      ) : null}
-      <Table columns={columns} rowKey="id" {...tableProps} />
-    </div>
+          </Form>
+        ) : null}
+        <Table columns={columns} rowKey="id" {...tableProps} />
+      </div>
+    </ConfigProvider>
   );
 };
 

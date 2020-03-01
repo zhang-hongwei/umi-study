@@ -28,7 +28,12 @@ instance.interceptors.response.use(
   response => {
     const res = response.data || {};
     const msg = res.msg || res.errorMsg;
-    const code = res.success;
+    const code = res.code;
+
+    if (code != 0) {
+      message.error(msg);
+      return Promise.reject(msg);
+    }
 
     return res;
   },

@@ -1,7 +1,10 @@
 import moment from 'moment';
+import _ from 'lodash';
+
+export const dateFormat = 'YYYY-MM-DD';
 
 // 格式化时间
-export function formatTime(time, format = 'YYYY-MM-DD') {
+export function formatTime(time, format = dateFormat) {
   return moment(time)
     .format(format)
     .toString();
@@ -55,17 +58,12 @@ export function getTimeDuration(x) {
   return `${addZero(h)}:${addZero(m)}:${addZero(s)}`;
 }
 
-export function getTimeofAToB(
-  startDate,
-  endDate,
-  format = 'YYYY-MM-DD',
-  type = 'days',
-) {
+export function getTimeofAToB(startDate, endDate, format = 'YYYY-MM-DD', type = 'days') {
   const start_time = moment(startDate);
   const end_time = moment(endDate);
   const diff_times = getDiffAToB(start_time, end_time);
   const times = [];
-  _.times(diff_times + 1, (i) => {
+  _.times(diff_times + 1, i => {
     const new_start_time = moment(start_time); // 每次重新初始化开始时间，因为我碰到了深拷贝的问题
     times.push(new_start_time.add(i, 'days').format(format)); // 数组下标从０开始，可以用它进行每次的天数递增
   });
@@ -92,7 +90,7 @@ export function getWeekDayCount(start, end) {
 }
 
 // 时间格式转成秒
-export const timeToSec = function (time) {
+export const timeToSec = function(time) {
   const timeArr = time.split(':');
   const hour = timeArr[0];
   const minute = timeArr[1];
@@ -102,10 +100,10 @@ export const timeToSec = function (time) {
 };
 
 // 秒转为时间格式
-export const secToTime = function (s) {
+export const secToTime = function(s) {
   const hour = parseInt(s / 3600, 10);
-  const minute = parseInt((s - (hour * 3600)) / 60, 10);
-  const sec = s - (hour * 3600) - (minute * 60);
+  const minute = parseInt((s - hour * 3600) / 60, 10);
+  const sec = s - hour * 3600 - minute * 60;
 
   const H = hour > 9 ? hour : `0${hour}`;
   const M = minute > 9 ? minute : `0${minute}`;

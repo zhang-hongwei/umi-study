@@ -9,6 +9,7 @@ const { Option } = Select;
 
 const AppList = props => {
   const { columns, requestData, tag = [], rowKey, searchFrom, refresh } = props;
+  console.log(refresh);
   const { getFieldDecorator } = props.form;
   const [isSearch, setIsSearch] = useState(false);
   const { tableProps, run, search, loading } = useFormTable(
@@ -18,12 +19,11 @@ const AppList = props => {
       defaultPageSize: 10,
       form: props.form,
     },
-    [refresh],
   );
 
-  useEffect(() => {
-    run();
-  }, [refresh]);
+  // useEffect(() => {
+  //   run();
+  // }, [refresh]);
 
   tableProps.pagination.showQuickJumper = true;
   tableProps.pagination.showSizeChanger = true;

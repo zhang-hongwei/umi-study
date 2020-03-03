@@ -2,8 +2,7 @@
 import { message, Modal } from 'antd';
 import router from 'umi/router';
 import axios from '@/packages/axios/axios';
-
-const { hostname } = window.location;
+import { handleParamsEmpty } from './utils';
 
 const instance = axios.create({
   baseURL: '', // url = base url + request url
@@ -14,6 +13,11 @@ const instance = axios.create({
 instance.interceptors.request.use(
   config => {
     if (config.method === 'get') {
+      handleParamsEmpty(config.params);
+    }
+
+    if (config.method === 'post') {
+      handleParamsEmpty(config.params);
     }
 
     return config;

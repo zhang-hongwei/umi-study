@@ -1,6 +1,6 @@
 'use strict';
 
-var bind = require('./helpers/bind');
+
 
 /*global toString:true*/
 
@@ -314,16 +314,28 @@ function deepMerge(/* obj1, obj2, obj3, ... */) {
  * @param {Object} thisArg The object to bind function to
  * @return {Object} The resulting value of object a
  */
-function extend(a, b, thisArg) {
-  forEach(b, function assignValue(val, key) {
-    if (thisArg && typeof val === 'function') {
-      a[key] = bind(val, thisArg);
-    } else {
-      a[key] = val;
+// function extend(a, b, thisArg) {
+//   forEach(b, function assignValue(val, key) {
+//     if (thisArg && typeof val === 'function') {
+//       a[key] = bind(val, thisArg);
+//     } else {
+//       a[key] = val;
+//     }
+//   });
+//   return a;
+// }
+
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+
+const handleParamsEmpty = data => {
+  for (let key in data) {
+    if (hasOwnProperty.call(data, key)) {
+      if (typeof data[key] === 'string') {
+        data[key] = data[key].trim();
+      }
     }
-  });
-  return a;
-}
+  }
+};
 
 module.exports = {
   isArray: isArray,
@@ -345,6 +357,7 @@ module.exports = {
   forEach: forEach,
   merge: merge,
   deepMerge: deepMerge,
-  extend: extend,
+  // extend: extend,
   trim: trim,
+  handleParamsEmpty: handleParamsEmpty,
 };

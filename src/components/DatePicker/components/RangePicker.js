@@ -6,9 +6,10 @@ const { RangePicker } = DatePicker;
 
 export default forwardRef((props, ref) => {
   // const {} = props;
+  // console.log(props);
   const handleChange = e => {
     e = e.map(item => formatTime(item));
     props.onChange(e);
   };
-  return <RangePicker onChange={handleChange} ref={ref} format={dateFormat} />;
+  return <RangePicker onChange={handleChange} format={dateFormat} />;
 });

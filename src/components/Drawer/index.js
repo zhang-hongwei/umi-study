@@ -1,8 +1,17 @@
 import React, { Component, forwardRef, useState, useImperativeHandle } from 'react';
 import { Drawer, Button } from 'antd';
-
+import styles from './index.less';
+import cns from 'classnames';
 export default forwardRef((props, ref) => {
-  const { children, title, placement = 'right', width = '800', ...rest } = props;
+  const {
+    children,
+    title,
+    placement = 'right',
+    width = '800',
+    className,
+    showBtn = true,
+    ...rest
+  } = props;
   const hide = () => {
     setVisible(false);
   };
@@ -20,8 +29,17 @@ export default forwardRef((props, ref) => {
       visible={visible}
       onClose={hide}
       {...rest}
+      className={cns(styles.drawer, className, 'za-drawer')}
     >
       {children}
+      {showBtn ? (
+        <div>
+          <Button style={{ marginRight: '20px' }} type="primary">
+            保存
+          </Button>
+          <Button onClick={hide}>取消</Button>
+        </div>
+      ) : null}
     </Drawer>
   );
 });

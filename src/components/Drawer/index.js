@@ -1,4 +1,4 @@
-import React, { Component, forwardRef, useState, useImperativeHandle } from 'react';
+import React, { forwardRef, useState, useImperativeHandle } from 'react';
 import { Drawer, Button } from 'antd';
 import styles from './index.less';
 import cns from 'classnames';

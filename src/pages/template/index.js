@@ -1,15 +1,14 @@
 import React, { useState, createRef } from 'react';
-import { Button, Col, Form, Input, Row, Select, ConfigProvider } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { Table } from '@/components/Table';
 import { connect } from 'dva';
 import { columns } from './config';
 import { RangePicker } from '@/components/DatePicker/index';
 import Drawer from '@/components/Drawer';
 
-let num = 0;
 const Page = ({ dispatch }) => {
   const ref = createRef();
-  let [deps, setDeps] = useState(1);
+  let [deps] = useState(1);
   const handleClick = () => {
     ref.current.show();
   };

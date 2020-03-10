@@ -1,6 +1,6 @@
 // import axios from 'axios';
-import { message, Modal } from 'antd';
-import router from 'umi/router';
+import { message } from 'antd';
+// import router from 'umi/router';
 import axios from '@/packages/axios/axios';
 import { handleParamsEmpty } from './utils';
 
@@ -34,7 +34,7 @@ instance.interceptors.response.use(
     const msg = res.msg || res.errorMsg;
     const code = res.code;
 
-    if (code != 0) {
+    if (code !== 0) {
       message.error(msg);
       return Promise.reject(msg);
     }

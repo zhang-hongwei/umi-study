@@ -14,6 +14,7 @@
     "axios": "^0.19.2",
     "bizcharts": "^3.5.7",
     "dva": "^2.6.0-beta.6",
+    "hoist-non-react-statics": "^3.3.2",
     "mockjs": "^1.1.0",
     "moment": "^2.24.0",
     "react": "^16.8.6",

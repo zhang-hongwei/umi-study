@@ -1,7 +1,11 @@
-import styles from './index.css';
+// import styles from './index.css';
 import { Layout, ConfigProvider } from 'antd';
 import zh_CN from 'antd/es/locale-provider/zh_CN';
 const { Header, Footer, Sider, Content } = Layout;
+
+window.addEventListener('load', function(e) {
+  console.log('e====>', e);
+});
 function BasicLayout(props) {
   return (
     <ConfigProvider locale={zh_CN}>

@@ -1,10 +1,10 @@
 import { useRequest } from '@umijs/hooks';
 import React from 'react';
 import { Table, Button } from 'antd';
-import Mock from 'mockjs';
+// import Mock from 'mockjs';
 
 export default ({ columns = [], requestData, deps }) => {
-  const { tableProps, params, refresh } = useRequest(
+  const { tableProps, refresh } = useRequest(
     ({ current, pageSize, sorter: s, filters: f }) => {
       const p = { current, pageSize };
       if (s?.field && s?.order) {
@@ -27,7 +27,7 @@ export default ({ columns = [], requestData, deps }) => {
   );
 
   // you can read sorter and filters from params[0]
-  const { sorter = {}, filters = {} } = params[0] || {};
+  // const {  filters = {} } = params[0] || {};
 
   return (
     <div>

@@ -10,8 +10,8 @@ export const handleSorter = sorter => {
   }
 
   return {
-    orderBy: o == undefined ? '' : o,
-    orderField: columnKey == undefined ? '' : columnKey,
+    orderBy: o === undefined ? '' : o,
+    orderField: columnKey === undefined ? '' : columnKey,
   };
 };
 

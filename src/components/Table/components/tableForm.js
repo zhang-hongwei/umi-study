@@ -1,17 +1,15 @@
-import React, { useState, useEffect, Children } from 'react';
-import { Button, Col, Form, Input, Row, Table, Select, ConfigProvider } from 'antd';
-import { WrappedFormUtils } from 'antd/lib/form/Form';
+import React, { useEffect, Children } from 'react';
+import { Button, Form, Table, ConfigProvider } from 'antd';
+// import { WrappedFormUtils } from 'antd/lib/form/Form';
 import { useFormTable } from '@umijs/hooks';
 // import { PaginatedParams } from '@umijs/hooks/useFormTable/lib';
-import { formItemLayout } from './config';
-
-const { Option } = Select;
+// import { formItemLayout } from './config';
 
 const AppList = props => {
-  const { columns, requestData, rowKey, refresh, children } = props;
+  const { columns, requestData, refresh, children } = props;
   const [form] = Form.useForm();
-  const [isSearch, setIsSearch] = useState(false);
-  const { tableProps, run, search, loading } = useFormTable(
+  // const [isSearch, setIsSearch] = useState(false);
+  const { tableProps, run, search } = useFormTable(
     (p, formData) => {
       return requestData({ ...p, ...formData });
     },
@@ -36,7 +34,7 @@ const AppList = props => {
   tableProps.pagination.showSizeChanger = true;
   tableProps.pagination.pageSizeOptions = ['10', '20', '30', '50'];
 
-  const { type, changeType, submit, reset } = search;
+  const { submit, reset } = search;
 
   const handleClick1 = () => {};
 
